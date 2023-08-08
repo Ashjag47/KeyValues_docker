@@ -1,0 +1,98 @@
+version: "3"
+services:
+  db_auth:
+    container_name: db_auth
+    image: postgres
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth_db
+    ports:
+      - "5433:5432"
+
+  db_app:
+    container_name: db_app
+    image: postgres
+    volumes:
+      - ./db_data_app:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_db
+    ports:
+      - "5434:5432"
+
+  server_auth:
+    build: ../KeyValues_auth
+    ports:
+      - "4000:4000"
+    depends_on:
+      db_auth:
+        condition: service_healthy
+    environment:
+      DB_HOST: db_auth
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: auth_db
+      DB_PORT: 5432
+      NODE_ENV: docker
+      SECRET: secret
+
+  server_app:
+    build: ../KeyValues_server
+    ports:
+      - "3000:3000"
+    depends_on:
+      db_app:
+        condition: service_healthy
+    environment:
+      DB_HOST: db_app
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: app_db
+      DB_PORT: 5432
+      NODE_ENV: docker
+
+  migration:
+    build:
+      context: ../KeyValues_auth
+      dockerfile: Dockerfile.migration
+    depends_on:
+      db_auth:
+        condition: service_healthy
+    environment:
+      DB_HOST: db_auth
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: auth_db
+      DB_PORT: 5432
+      NODE_ENV: migration
+
+  migration_app:
+    build:
+      context: ../KeyValues_server
+      dockerfile: Dockerfile.migration
+    depends_on:
+      db_app:
+        condition: service_healthy
+    environment:
+      DB_HOST: db_app
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: app_db
+      DB_PORT: 5432
+      NODE_ENV: migration
