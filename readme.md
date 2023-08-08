@@ -33,10 +33,8 @@ The key-value store is a project that allows the users to store key-value pairs 
   - [https://github.com/Ashjag47/KeyValues_auth.git](https://github.com/Ashjag47/KeyValues_auth.git)
   - [https://github.com/Ashjag47/KeyValues_server.git](https://github.com/Ashjag47/KeyValues_server.git)
   - #### Example folder structure,
-    - /KeyValues_API
-      - /KeyValues_auth
-      - /KeyValues_docker
-      - /KeyValues_server
+  - 
+  ![Folder Structure!](/images/folderStructure.png "Folder Structure")
 ### 2. Go into the "KeyValues_docker" folder,
    ```bash
       cd KeyValues_docker
