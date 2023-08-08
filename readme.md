@@ -41,7 +41,7 @@ The key-value store is a project that allows the users to store key-value pairs 
    ```
    - **To run** the entire project (all the containers),
    ```bash
-      docker-compose up --build -d
+      docker-compose up --build
    ```
    - **To stop** the entire project (all the containers),
    ```bash
