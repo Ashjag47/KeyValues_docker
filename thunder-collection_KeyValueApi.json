@@ -1,0 +1,167 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "KeyValueApi",
+    "dateExported": "2023-08-08T07:27:35.032Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "1cb478cf-eb27-4203-a6a3-f25dd76fe51e",
+            "name": "KeyValueCRUD",
+            "containerId": "",
+            "created": "2023-08-08T07:04:33.300Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "7dcc7462-bb62-4a2f-beb2-717366dc0d81",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2023-08-08T07:05:41.498Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "eefb2eda-fb71-4dd8-9e9e-2d099e9b18f2",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "7dcc7462-bb62-4a2f-beb2-717366dc0d81",
+            "name": "User Registration",
+            "url": "http://localhost:4000/api/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-08-08T07:06:35.038Z",
+            "modified": "2023-08-08T07:08:06.564Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"example_user\",\n  \"email\": \"user@example.com\",\n  \"password\": \"Pass@123\",\n  \"full_name\": \"John Doe\",\n  \"age\": 30,\n  \"gender\": \"male\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0c75dfd6-4a03-40b6-9318-7757d6fbcfe4",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "7dcc7462-bb62-4a2f-beb2-717366dc0d81",
+            "name": "Generate Token",
+            "url": "http://localhost:4000/api/token",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-08T07:08:36.108Z",
+            "modified": "2023-08-08T07:10:42.328Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"example_user\",\n  \"password\": \"Pass@123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "82fb3612-9ff6-4cdf-9cd4-9bb9bb2ca482",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "7dcc7462-bb62-4a2f-beb2-717366dc0d81",
+            "name": "Validate Token",
+            "url": "http://localhost:4000/api/token/validate",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-08-08T07:11:47.218Z",
+            "modified": "2023-08-08T07:13:50.814Z",
+            "headers": [
+                {
+                    "name": "authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV4YW1wbGVfdXNlciIsInBhc3N3b3JkIjoiUGFzc0AxMjMiLCJpYXQiOjE2OTE0Nzg2NDIsImV4cCI6MTY5MTQ4MjI0Mn0.yGe1Ogado9Wt9AmC2FothN_JS0u4GadOayiN2pXg9kc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "35520a05-beee-40bc-abc3-9bb690b86790",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "1cb478cf-eb27-4203-a6a3-f25dd76fe51e",
+            "name": "Store Data",
+            "url": "http://localhost:3000/api/data",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-08-08T07:15:20.200Z",
+            "modified": "2023-08-08T07:19:44.811Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV4YW1wbGVfdXNlciIsInBhc3N3b3JkIjoiUGFzc0AxMjMiLCJpYXQiOjE2OTE0Nzg2NDIsImV4cCI6MTY5MTQ4MjI0Mn0.yGe1Ogado9Wt9AmC2FothN_JS0u4GadOayiN2pXg9kc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"key\": \"unique_key2\",\n  \"value\": \"data_value\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "71efa613-47cc-4fbd-b275-d97d4b65bdd6",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "1cb478cf-eb27-4203-a6a3-f25dd76fe51e",
+            "name": "Retrieve Data",
+            "url": "http://localhost:3000/api/data/unique_key",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-08-08T07:20:33.146Z",
+            "modified": "2023-08-08T07:21:46.681Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV4YW1wbGVfdXNlciIsInBhc3N3b3JkIjoiUGFzc0AxMjMiLCJpYXQiOjE2OTE0Nzg2NDIsImV4cCI6MTY5MTQ4MjI0Mn0.yGe1Ogado9Wt9AmC2FothN_JS0u4GadOayiN2pXg9kc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c9a72ada-96f5-4a41-bf1b-3e08f5a21a96",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "1cb478cf-eb27-4203-a6a3-f25dd76fe51e",
+            "name": "Update Data",
+            "url": "http://localhost:3000/api/data/unique_key",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2023-08-08T07:22:44.473Z",
+            "modified": "2023-08-08T07:24:16.978Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV4YW1wbGVfdXNlciIsInBhc3N3b3JkIjoiUGFzc0AxMjMiLCJpYXQiOjE2OTE0Nzg2NDIsImV4cCI6MTY5MTQ4MjI0Mn0.yGe1Ogado9Wt9AmC2FothN_JS0u4GadOayiN2pXg9kc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"value\": \"new_data_value\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "312f07d4-bd23-485e-9b3c-9749fbca2d74",
+            "colId": "8d6f057d-142c-4b8e-931d-6dc7ef580d95",
+            "containerId": "1cb478cf-eb27-4203-a6a3-f25dd76fe51e",
+            "name": "Delete Data",
+            "url": "http://localhost:3000/api/data/unique_key2",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2023-08-08T07:25:12.476Z",
+            "modified": "2023-08-08T07:26:03.721Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV4YW1wbGVfdXNlciIsInBhc3N3b3JkIjoiUGFzc0AxMjMiLCJpYXQiOjE2OTE0Nzg2NDIsImV4cCI6MTY5MTQ4MjI0Mn0.yGe1Ogado9Wt9AmC2FothN_JS0u4GadOayiN2pXg9kc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
